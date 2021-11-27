@@ -35,6 +35,10 @@ rmw_create_guard_condition(
   aux_guard_condition->rmw_guard_condition.implementation_identifier =
     rmw_get_implementation_identifier();
 
+  aux_guard_condition->rmw_guard_condition.data = (bool *)rmw_allocate(sizeof(bool));
+  bool * hasTriggered = (bool *)aux_guard_condition->rmw_guard_condition.data;
+  *hasTriggered = false;
+
   return &aux_guard_condition->rmw_guard_condition;
 }
 
